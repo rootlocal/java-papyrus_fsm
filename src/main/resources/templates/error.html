@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout/_main :: head(~{::title},~{::link})}">
+    <title>Not found</title>
+
+    <link th:href="@{/assets/css/error.css}" th:rel="stylesheet"/>
+</head>
+<body>
+<nav th:replace="~{layout/_navbar :: navbar('1navbar')}"></nav>
+
+<div class="container">
+    <div class="row page">
+
+        <div class="col-12">
+            <h1>Error <span th:text="${errorCode}"></span></h1>
+            <p class="text-muted">Application has encountered an error.
+                Please contact support on ...</p>
+
+            <div class="alert alert-danger" th:if="${message}">
+                <span th:text="${message}">...</span>
+            </div>
+
+            <div class="row error-block" th:if="${errorCode}">
+                <div class="col-12">
+                    <h4>Error Code</h4>
+                    <div class="alert alert-info">
+                        <p th:text="${errorCode}">...</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row error-block" th:if="${url}">
+                <div class="col-12">
+                    <h4>Url:</h4>
+                    <div class="alert alert-info">
+                        <p th:text="${url}">...</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row error-block" th:if="${not #lists.isEmpty(cookies)}">
+                <div class="col-12">
+                    <h4>Cookies:</h4>
+                    <ul class="list-group">
+                        <li class="list-group-item list-group-item-info"
+                            th:each="cookie : ${cookies}">
+                            <span th:text="${cookie}"></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="row error-block" th:if="${not #lists.isEmpty(trace)}">
+                <div class="col-12">
+                    <h4>Trace:</h4>
+                    <ul class="list-group">
+                        <li class="list-group-item list-group-item-warning"
+                            th:each="tr : ${trace}">
+                            <span th:text="${tr}"></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div th:insert="~{layout/_main :: footer}"></div>
+
+</body>
+</html>

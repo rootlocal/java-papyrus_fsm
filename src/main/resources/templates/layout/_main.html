@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:fragment="head(title, links)">
+    <title th:replace="${title}">Spring Boot Thymeleaf Application</title>
+    <link th:href="@{/webjars/font-awesome/css/all.min.css} " th:rel="stylesheet"/>
+    <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css} " th:rel="stylesheet"/>
+    <link th:href="@{/assets/css/site.css}" th:rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.1.0/css/flag-icon.min.css" rel="stylesheet">
+    <!--/* Per-page placeholder for additional links */-->
+    <th:block th:replace="${links}"/>
+</head>
+
+<body>
+
+
+<div class="footer" th:fragment="footer">
+    <div class="container-fluid">
+        <div class="col-12">© 2021 (copyright)</div>
+    </div>
+
+    <script th:src="@{/webjars/jquery/dist/jquery.min.js}"></script>
+    <script th:src="@{/webjars/popper/umd/popper.min.js}"></script>
+    <script th:src="@{/webjars/font-awesome/js/all.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    <script crossorigin="anonymous" src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+    <script th:src="@{/assets/js/site.js}"></script>
+</div>
+</body>
+</html>

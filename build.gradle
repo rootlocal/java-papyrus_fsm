@@ -1,0 +1,90 @@
+plugins {
+    id 'org.springframework.boot' version '2.6.1'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+    id 'war'
+    id 'idea'
+    id 'eclipse'
+}
+
+group = 'ru.rootlocal'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+project.ext.buildDate = new Date()
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+repositories {
+    mavenCentral()
+    maven { url 'https://repo.spring.io/milestone' }
+    maven { url 'https://repo.spring.io/snapshot' }
+}
+
+dependencies {
+    implementation 'org.jetbrains:annotations:23.0.0'
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.12.0'
+
+    providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+    implementation 'org.springframework.boot:spring-boot-starter'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    implementation group: 'org.springframework.statemachine', name: 'spring-statemachine-core', version: '3.2.0'
+    implementation group: 'org.springframework.statemachine', name: 'spring-statemachine-starter', version: '3.2.0'
+    testImplementation group: 'org.springframework.statemachine', name: 'spring-statemachine-test', version: '3.2.0'
+    implementation group: 'org.springframework.statemachine', name: 'spring-statemachine-uml', version: '3.2.0'
+
+    implementation 'com.google.code.gson:gson:2.9.0'
+    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+    implementation 'junit:junit:4.13.2'
+    testImplementation 'org.springframework.security:spring-security-test'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    implementation group: 'org.webjars', name: 'bootstrap', version: '4.6.0'
+    implementation group: 'org.webjars.bower', name: 'jquery', version: '3.6.0'
+    implementation group: 'org.webjars', name: 'font-awesome', version: '5.15.4'
+    implementation group: 'org.jboss.aerogear', name: 'aerogear-otp-java', version: '1.0.0'
+    implementation 'com.vdurmont:emoji-java:5.1.1'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+
+bootJar {
+    archiveFileName = "${archiveBaseName.get()}.${archiveExtension.get()}"
+    launchScript()
+}
+
+bootWar {
+    archiveFileName = "${archiveBaseName.get()}.${archiveExtension.get()}"
+    launchScript()
+}
+
+def updateApplicationProperties() {
+    def configFile = new File('src/main/resources/application.properties')
+
+    println "updating version to '${version}' in ${configFile}"
+    String configContent = configFile.getText('UTF-8')
+    configContent = configContent.replaceAll(/application\.version=.*/, "application.version=${version}")
+    configFile.write(configContent, 'UTF-8')
+}
+
+allprojects {
+    updateApplicationProperties()
+}
+
