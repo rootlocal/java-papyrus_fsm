@@ -25,6 +25,6 @@ public class RunnerStateMachineWithCommandLine implements CommandLineRunner {
     public void run(String... args) {
         StateMachine<String, String> stateMachine = stateMachineFactory.getStateMachine();
         stateMachine.startReactively().subscribe();
-        log.info("machine: {} State: {}", stateMachine.getUuid(), stateMachine.getState().getId());
+        log.info("machineId: {} State: {}", stateMachine.getUuid(), stateMachine.getState().getId());
     }
 }

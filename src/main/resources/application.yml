@@ -1,0 +1,91 @@
+spring:
+  profiles:
+    active: production
+
+---
+
+application:
+  title: FSM Papyrus
+  papyrus:
+    uml: "classpath:test_FSM/test_FSM.uml"
+server:
+  port: 8080
+  address: 127.0.0.1
+
+spring:
+  profiles: production
+  statemachine:
+    data:
+      mongo:
+        repositories:
+          enabled: false
+      redis:
+        repositories:
+          enabled: false
+      jpa:
+        repositories:
+          enabled: false
+
+  thymeleaf:
+    cache: false
+    suffix: .html
+  data:
+    rest:
+      base-path: /api
+  main:
+    log-startup-info: false
+    output:
+      ansi:
+        enabled: ALWAYS
+
+logging:
+  file:
+    name: log/app.log
+  level:
+    # FATAL ERROR WARN INFO DEBUG TRACE
+    org.springframework: ERROR
+    org.springframework.web: ERROR
+    tomcat: ERROR
+    web: ERROR
+    sql: ERROR
+  group:
+    tomcat: org.apache.catalina, org.apache.coyote, org.apache.tomcat
+    web: org.springframework.core.codec, org.springframework.http, org.springframework.web, org.springframework.boot.actuate.endpoint.web, org.springframework.boot.web.servlet.ServletContextInitializerBeans
+    sql: org.springframework.jdbc.core, org.hibernate.SQL
+
+management:
+  endpoint:
+    #chaos monkey for spring boot props
+    chaosmonkey:
+      enabled: true
+    chaosmonkeyjmx:
+      enabled: true
+
+chaos:
+  monkey:
+    enabled: true
+    assaults:
+      #How many requests are to be attacked. 1: attack each request; 5: each 5th request is attacked
+      level: 1
+      #Minimum latency in ms added to the request
+      latencyRangeStart: 3000
+      #Maximum latency in ms added to the request
+      latencyRangeEnd: 15000
+      #Latency assault active
+      latencyActive: true
+      #Exception assault active
+      exceptionsActive: false
+      #AppKiller assault active
+      killApplicationActive: false
+
+    watcher:
+      #Controller watcher active
+      controller: false
+      #RestController watcher active
+      restController: false
+      #Service watcher active
+      service: true
+      #Repository watcher active
+      repository: false
+      #Component watcher active
+      component: false

@@ -1,0 +1,15 @@
+${AnsiColor.YELLOW}
+    __      __             ___
+   /\ \  __/\ \           /\_ \
+   \ \ \/\ \ \ \     __   \//\ \      ___     ___     ___ ___       __
+    \ \ \ \ \ \ \  /'__`\   \ \ \    /'___\  / __`\ /' __` __`\   /'__`\
+     \ \ \_/ \_\ \/\  __/    \_\ \_ /\ \__/ /\ \L\ \/\ \/\ \/\ \ /\  __/
+      \ `\___x___/\ \____\   /\____\\ \____\\ \____/\ \_\ \_\ \_\\ \____\
+       '\/__//__/  \/____/   \/____/ \/____/ \/___/  \/_/\/_/\/_/ \/____/
+${AnsiColor.BRIGHT_CYAN}Spring Boot: ${spring-boot.formatted-version}
+${AnsiColor.RED}Active profiles: ${spring.profiles.active}
+spring.datasource.url: ${spring.datasource.url}
+${AnsiColor.BLUE}Application Name: ${application.title}
+Application Version: ${application.version}
+Server Address: http://${server.address}:${server.port}
+${AnsiColor.DEFAULT}

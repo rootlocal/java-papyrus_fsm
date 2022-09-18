@@ -20,7 +20,7 @@ import org.springframework.statemachine.monitor.StateMachineMonitor;
 import org.springframework.statemachine.state.State;
 import org.springframework.statemachine.transition.Transition;
 import org.springframework.statemachine.uml.UmlStateMachineModelFactory;
-import ru.rootlocal.papyrus_fsm.fsm.actions.S1Action;
+import ru.rootlocal.papyrus_fsm.fsm.actions.*;
 
 import java.util.Optional;
 
@@ -31,14 +31,18 @@ public class StateMachineConfig extends StateMachineConfigurerAdapter<String, St
     private final Logger log = LoggerFactory.getLogger(StateMachineConfig.class);
     private final FSMMonitor fsmMonitor;
     private final S1Action s1Action;
+    private final S2Action s2Action;
+    private final UmlConfig umlConfig;
 
 
     @Autowired
     public StateMachineConfig(
             FSMMonitor fsmMonitor,
-            S1Action s1Action) {
+            S1Action s1Action, S2Action s2Action, UmlConfig umlConfig) {
         this.fsmMonitor = fsmMonitor;
         this.s1Action = s1Action;
+        this.s2Action = s2Action;
+        this.umlConfig = umlConfig;
     }
 
     @Override
@@ -49,7 +53,7 @@ public class StateMachineConfig extends StateMachineConfigurerAdapter<String, St
     @Override
     public void configure(final @NotNull StateMachineConfigurationConfigurer<String, String> config) throws Exception {
         config.withConfiguration()
-                //.autoStartup(true)
+                .autoStartup(true)
                 .listener(botStateMachineListener())
                 .and()
                 .withMonitoring()
@@ -59,13 +63,13 @@ public class StateMachineConfig extends StateMachineConfigurerAdapter<String, St
     @Override
     public void configure(final @NotNull StateMachineStateConfigurer<String, String> states) throws Exception {
         states.withStates().initial("S1")
-                .state("S1", s1Action);
+                .state("S1", s1Action)
+                .state("S2", s2Action);
     }
 
     @Bean
     public StateMachineModelFactory<String, String> modelFactory() {
-        String location = "classpath:machine.uml";
-        return new UmlStateMachineModelFactory(location);
+        return new UmlStateMachineModelFactory(umlConfig.getUml());
     }
 
     @Bean(name = "stateMachineMonitor")

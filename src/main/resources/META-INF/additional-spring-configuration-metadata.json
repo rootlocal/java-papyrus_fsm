@@ -1,3 +1,9 @@
 {
-
+  "properties": [
+    {
+      "name": "application.papyrus.uml",
+      "type": "java.lang.String",
+      "description": "File location UML File."
+    }
+  ]
 }

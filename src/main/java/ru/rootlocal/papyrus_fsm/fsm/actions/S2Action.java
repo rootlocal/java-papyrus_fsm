@@ -5,8 +5,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.statemachine.StateContext;
 import org.springframework.stereotype.Component;
 
-@Component(value = "S1Action")
-public class S1Action extends FSMAction<String, String> {
+@Component(value = "S2Action")
+public class S2Action extends FSMAction<String, String> {
     private final Logger log = LoggerFactory.getLogger(Class.class);
 
 

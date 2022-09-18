@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_7WFCUDdXEe2VLeTEHvddtw" name="test_FSM">
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_7dTEoDdXEe2VLeTEHvddtw">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:StateMachine" xmi:id="_7YSBwDdXEe2VLeTEHvddtw" name="StateMachine1">
+    <region xmi:type="uml:Region" xmi:id="_7ZwocDdXEe2VLeTEHvddtw" name="Region1">
+      <transition xmi:type="uml:Transition" xmi:id="_6OsHADdYEe2VLeTEHvddtw" name="E1" source="_GOYooDdYEe2VLeTEHvddtw" target="_bnJ9ADdYEe2VLeTEHvddtw"/>
+      <transition xmi:type="uml:Transition" xmi:id="_J3avYDdZEe2VLeTEHvddtw" name="E2" source="_bnJ9ADdYEe2VLeTEHvddtw" target="_H8ukUDdZEe2VLeTEHvddtw"/>
+      <transition xmi:type="uml:Transition" xmi:id="_s7zfMDdZEe2VLeTEHvddtw" name="E3" kind="local" source="_H8ukUDdZEe2VLeTEHvddtw" target="_Zb8NMDdZEe2VLeTEHvddtw">
+        <trigger xmi:type="uml:Trigger" xmi:id="_FzbqoDdbEe2VLeTEHvddtw" event="_Ez2c8DdbEe2VLeTEHvddtw"/>
+      </transition>
+      <transition xmi:type="uml:Transition" xmi:id="_zUdqYDdZEe2VLeTEHvddtw" name="E4" source="_Zb8NMDdZEe2VLeTEHvddtw" target="_alz_UDdZEe2VLeTEHvddtw">
+        <trigger xmi:type="uml:Trigger" xmi:id="_yMaLQDdbEe2VLeTEHvddtw" event="_x22K8DdbEe2VLeTEHvddtw"/>
+      </transition>
+      <transition xmi:type="uml:Transition" xmi:id="_3iNdMDdZEe2VLeTEHvddtw" name="E5" source="_Zb8NMDdZEe2VLeTEHvddtw" target="_1pCVEDdZEe2VLeTEHvddtw"/>
+      <transition xmi:type="uml:Transition" xmi:id="__tSoQDdZEe2VLeTEHvddtw" name="E7" source="_1pCVEDdZEe2VLeTEHvddtw" target="_6o-Z0DdZEe2VLeTEHvddtw"/>
+      <transition xmi:type="uml:Transition" xmi:id="_AqkI0DdaEe2VLeTEHvddtw" name="E8" source="_1pCVEDdZEe2VLeTEHvddtw" target="_8dFbwDdZEe2VLeTEHvddtw"/>
+      <transition xmi:type="uml:Transition" xmi:id="_FSNpYDdaEe2VLeTEHvddtw" name="E6" source="_1pCVEDdZEe2VLeTEHvddtw" target="_9ecLEDdZEe2VLeTEHvddtw"/>
+      <subvertex xmi:type="uml:Pseudostate" xmi:id="_GOYooDdYEe2VLeTEHvddtw" name="Initial1"/>
+      <subvertex xmi:type="uml:State" xmi:id="_bnJ9ADdYEe2VLeTEHvddtw" name="S1"/>
+      <subvertex xmi:type="uml:State" xmi:id="_H8ukUDdZEe2VLeTEHvddtw" name="S2"/>
+      <subvertex xmi:type="uml:State" xmi:id="_Zb8NMDdZEe2VLeTEHvddtw" name="S3"/>
+      <subvertex xmi:type="uml:State" xmi:id="_alz_UDdZEe2VLeTEHvddtw" name="S4"/>
+      <subvertex xmi:type="uml:State" xmi:id="_1pCVEDdZEe2VLeTEHvddtw" name="S5"/>
+      <subvertex xmi:type="uml:State" xmi:id="_6o-Z0DdZEe2VLeTEHvddtw" name="S6"/>
+      <subvertex xmi:type="uml:State" xmi:id="_8dFbwDdZEe2VLeTEHvddtw" name="S7"/>
+      <subvertex xmi:type="uml:State" xmi:id="_9ecLEDdZEe2VLeTEHvddtw" name="S8"/>
+    </region>
+  </packagedElement>
+  <packagedElement xmi:type="uml:TimeEvent" xmi:id="_Ez2c8DdbEe2VLeTEHvddtw" name="TE1">
+    <when xmi:type="uml:TimeExpression" xmi:id="_c1vvsDdbEe2VLeTEHvddtw">
+      <expr xmi:type="uml:LiteralInteger" xmi:id="_c1vvsTdbEe2VLeTEHvddtw" value="1000"/>
+    </when>
+  </packagedElement>
+  <packagedElement xmi:type="uml:TimeEvent" xmi:id="_x22K8DdbEe2VLeTEHvddtw" name="TE2">
+    <when xmi:type="uml:TimeExpression" xmi:id="_x22yADdbEe2VLeTEHvddtw">
+      <expr xmi:type="uml:LiteralInteger" xmi:id="_x22yATdbEe2VLeTEHvddtw" value="1500"/>
+    </when>
+  </packagedElement>
+  <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_60pTwDdYEe2VLeTEHvddtw">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_60rI8DdYEe2VLeTEHvddtw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <references xmi:type="ecore:EPackage" href="pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#_Kv8EIKFXEeS_KNX0nfvIVQ"/>
+    </eAnnotations>
+    <appliedProfile xmi:type="uml:Profile" href="pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#ActionLanguage"/>
+  </profileApplication>
+</uml:Model>
